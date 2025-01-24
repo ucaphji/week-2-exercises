@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <random>
 
 bool InsideUnitSphere(double x, double y, double z)
 {
@@ -15,13 +16,17 @@ double IntegrateMonteCarlo3D(int n_points, double min, double max)
     double VolCube = std::pow((max - min), 3);
 
     //set up random number generator here
+    std::default_random_engine generator;
+    std::uniform_real_distribution<double> distribution(0.0,1.0);
 
+    
+    
     for(int i = 0; i < n_points; i++)
     {
         //generate random points here
-        double x = 
-        double y =
-        double z = 
+        double x = distribution(generator)
+        double y = distribution(generator)
+        double z = distribution(generator)
         if(InsideUnitSphere(x, y, z)) count++;
     }
 
@@ -32,6 +37,8 @@ double IntegrateMonteCarlo3D(int n_points, double min, double max)
 int main()
 {
     int N_points = 10000;
+
+
     
     double UnitSphereVol = IntegrateMonteCarlo3D(N_points, -1.0, 1.0);
 
